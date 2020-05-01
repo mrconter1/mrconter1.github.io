@@ -23,11 +23,9 @@
 </style>  
   
 <script type="text/javascript">
-$(".col").click(function(){
-  $(this).fadeOut();
-  $(this).fadeOut("slow");
-  $(this).fadeOut(3000);
-});
+  $(document).ready(function() {
+    alert("Hello world !! document is ready");
+}); 
 </script>
   
 <body>
@@ -36,11 +34,6 @@ $(".col").click(function(){
   <div class="row h-100 justify-content-center align-items-center">
       
         <div class="row">
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="w-100"></div>
         <div class="col">col</div>
         <div class="col">col</div>
         <div class="col">col</div>
