@@ -1,74 +1,288 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
-  
-<style>
-.col {
-    background-color: #DC3916;
-    
-    border-radius: 10px;
-    text-align: center;
-    height: 100px;
-    display: flex;  
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    
-    color: #F7EEEB;
-    font-family: 'Roboto';
-    font-weight: bold;
-    font-size: 25px;
-}
-</style>  
-  
-<script type="text/javascript">
-  $(document).ready(function() {
-    $(".col").click(function() {
-      $(this).animate({backgroundColor: '#a62a0f'}, 'slow');
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XVP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+
+    @font-face {
+      font-family: "Proxima Nova Semibold";
+      src: url("Proxima Nova Semibold.ttf");
+    }
+
+    body {
+      background-color: white;
+      font-family: "Proxima Nova Semibold", sans-serif;
+    }
+
+    .section-title {
+      margin-top: 7rem;
+      margin-bottom: 1.5rem;
+      font-size: 3.5rem;
+    }
+
+    .sticky-top {
+      top: -1px;
+      z-index: 1030;
+    }
+
+    .header {
+      height: 3cm;
+      background-color: white;
+      transition: top 0.3s ease;
+      display: flex; /* Add this line */
+      align-items: center; /* Add this line */
+      justify-content: center; /* Add this line */
+    }
+
+    .header-container {
+      position: relative;
+      height: 100%;
+    }
+
+    .introduction-container {
+      background-color: white;
+      color: rgb(37, 37, 37);
+      height: 50vh;
+      width: 100vw;
+      padding: 0 15px;
+    }
+
+    .contact-link {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      font-size: 1.5rem;
+      transform: translateY(-50%);
+      text-decoration: none;
+      color: rgb(37, 37, 37);
+    }
+
+    .contact-link:hover {
+      color: rgb(91, 91, 255);
+    }
+
+    .services-container {
+      background-color: black;
+      color: white;
+      height: 66.6vh;
+      width: 100vw;
+      padding: 0 15px;
+    }
+
+    .contact-container {
+      background-color: black;
+      color: white;
+      height: 66.6vh;
+      width: 100vw;
+      padding: 0 15px;
+    }
+
+    @media (max-width: 576px) {
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .header {
+        height: 2.5cm;
+      }
+    }
+
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const header = document.querySelector(".header");
+
+      if (!header) return; // Safely exit if the header element is not found
+
+      window.addEventListener("scroll", () => {
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+        if (currentScrollTop > lastScrollTop) {
+          header.style.top = "-3cm"; // Hiding the header when scrolling down
+        } else {
+          header.style.top = "0"; // Showing the header when scrolling up
+        }
+        lastScrollTop = currentScrollTop;
+      });
     });
-}); 
-</script>
-  
+  </script>
+
+</head>
+
 <body>
 
-<div class="container h-100">
-  <div class="row h-100 justify-content-center align-items-center">
-      
-        <div class="row">
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="w-100"></div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="w-100"></div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="w-100"></div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="w-100"></div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
+  <!-- Header -->
+  <header class="header sticky-top">
+    <div class="container header-container">
+      <div class="row"> <!-- Add row -->
+        <div class="col-auto">
+          <img src="logo.png" alt="Logo" class="img-fluid" style="max-height: calc(3cm - 50px); transform: translateY(28px);">
         </div>
+        <div class="col text-end">
+          <a href="#contact" class="contact-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  </div>  
-</div>
-  
+  <!-- Introduction -->
+  <section id="introduction" class="introduction-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- <p>NYD is the name of Västerås's ML consultant company</p> -->
+          <h1 class="section-title">Committed to innovation, XVP designs and deploys customized machine learning solutions to elevate your business performance.</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services-container">
+    <section class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2 class="section-title">What we offer</h2>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black;">Artificial Intelligence for Visual Content</h5>
+              <p class="card-text" style="color: black;">Effortlessly generate logos and custom visual content with our AI-driven image generation tool. Train personalized models to align with your unique style and seamlessly transform sketches into images.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black;">Advanced Image Processing</h5>
+              <p class="card-text" style="color: black;">Enhance your vision processing with AI-based object detection and tracking capabilities. Unlock powerful insights for efficient data analysis and improved decision-making.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black;">Intelligent Text Analysis</h5>
+              <p class="card-text" style="color: black;">Elevate your data comprehension with our AI-driven text analysis solutions. Train bespoke models, utilize ChatGPT, and perform customer response analysis to revolutionize your business insights.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black;">Advanced Speech-to-Text Services</h5>
+              <p class="card-text" style="color: black;">Harness the power of top-notch AI speech recognition with our speech-to-text transcription, real-time translation, and dictation services to streamline your communication and workflow.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black;">Accelerating Business Growth with AI</h5>
+              <p class="card-text" style="color: black;">Stay ahead of the curve with our customized AI learning courses designed to equip you with the skills and knowledge needed to harness artificial intelligence for your business success.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black;">Captivating 3D Visualization with AI</h5>
+              <p class="card-text" style="color: black;">Bring objects and scenes to life with striking 3D visualizations generated from just a handful of photos. Explore volumetric capturing solutions for engaging virtual experiences and true-to-life imagery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Employees -->
+  <section id="employees" class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2 class="section-title">Who are we</h2>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Employee Image">
+          <div class="card-body">
+            <h5 class="card-title" style="color: black;">Rasmus Lindahl</h5>
+            <p class="card-text" style="color: black;">A bright mind with remarkable energy, our founder excels in AI expertise, honing skills from years at ABB Robotics R&D.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Employee Image">
+          <div class="card-body">
+            <h5 class="card-title" style="color: black;">Viktor Djukic Dimander</h5>
+            <p class="card-text" style="color: black;">Entrepreneurial background, Northvolt member, unwavering principles; industrial design expert, fascinated by AI esthetics.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Employee Image">
+          <div class="card-body">
+            <h5 class="card-title" style="color: black;">Niklas Åsberg</h5>
+            <p class="card-text" style="color: black;">Expert computer science consultant, experienced with major companies, passionate about machine learning, and dedicated to hard work.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Employee Image">
+          <div class="card-body">
+            <h5 class="card-title" style="color: black;">Emil Monsén</h5>
+            <p class="card-text" style="color: black;">Smart and curious, boasting a solid industrial economy base, well-versed in effective management, infatuated with AI's progress.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2 class="section-title">Contact Us</h2>
+      </div>
+      <div class="col-md-6 offset-md-3">
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn" style="background-color: white; color: black;">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>
